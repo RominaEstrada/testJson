@@ -1,0 +1,88 @@
+  
+{
+    "todos": [
+      {
+        "name": "Preparar la clase",
+        "author": "Luis Gabriel Cazzullo",
+        "id": 4
+      },
+      {
+        "name": "Tenés que andar",
+        "author": "No tiene sentdio",
+        "id": 5
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 7
+      }
+    ],
+    "series": [
+        {
+            "id": 1,
+            "nombre": "The Last O.G",
+            "descripcion": "Tras quince años en prisión, Tray queda en libertad y restablece el vínculo con su ahora adulto primo Bobby. Además, se sorprende al enterarse que su ex, Shay, no solo está casada con un hombre blanco, sino que ocultó que tuvo mellizos hace 15 años.",
+            "año": 2018,
+            "destacada":true,
+            "temporadas": 3,
+            "duracion":"30min",
+            "calificacion": 4.5,
+            "calidad": "HD",
+            "genero": "Comedia",
+            "elenco": "Tracy Morgan - Tiffany Haddish - Allen Maldonado - Ryan Gaul - Taylor Christian Mosby - Dante Hoagland",
+            "origen": "EEUU",
+            "imagen": "https://images.tntdrama.com/tnt/$dyna_params/https%3A%2F%2Fi.cdn.tntdrama.com%2Fassets%2Fimages%2F2019%2F04%2FLastOG-2048x1536.jpg",
+            "url": ""
+        },
+        {
+            "id": 2,
+            "nombre": "QUIZ",
+            "descripcion": "La historia de Charles Ingram, un ex militar británico que causó un gran escándalo luego de ser acusado de hacer trampa tras haber ganado el premio mayor en el programa ¿Quién quiere ser milllonario?",
+            "año": 2020,
+            "destacada":true,
+            "temporadas": 1,
+            "duracion":"46min",
+            "calificacion": 5,
+            "calidad": "Full HD",
+            "genero": "Drama",
+            "elenco": "Matthew Macfadyen - Sian Clifford - Mark Bonnar - Aisling Bea - Elliot Levey - Risteárd Cooper - Trystan Gravelle - Michael Jibson - Helen McCrory - Michael Sheen",
+            "origen": "UK",
+            "imagen": "https://images.tntdrama.com/tnt/$dyna_params/https%3A%2F%2Fi.cdn.tntdrama.com%2Fassets%2Fimages%2F2019%2F04%2FLastOG-2048x1536.jpg",
+            "url": ""
+        },
+        {
+            "id": 3,
+            "nombre": "La Granja de Zenón",
+            "descripcion": "¡La vida en la granja nunca ha sido tan divertida, Canciones alegres e historias emocionantes son parte de cada episodio, enseñando a los niños la importancia del trabajo en equipo y fomentando su conexion con la naturaleza.",
+            "año": 2016,
+            "destacada":true,
+            "temporadas": 3,
+            "duracion":"29min",
+            "calificacion": 4.8,
+            "calidad": "HD",
+            "genero": "Infantil",
+            "elenco": "-",
+            "origen": "UK",
+            "imagen": "https://images.tntdrama.com/tnt/$dyna_params/https%3A%2F%2Fi.cdn.tntdrama.com%2Fassets%2Fimages%2F2019%2F04%2FLastOG-2048x1536.jpg",
+            "url": ""
+        },
+        {
+          "id": 4,
+          "nombre": "xxxxxx",
+          "descripcion": "¡La vida en la granja nunca ha sido tan divertida, Canciones alegres e historias emocionantes son parte de cada episodio, enseñando a los niños la importancia del trabajo en equipo y fomentando su conexion con la naturaleza.",
+          "año": 2016,
+          "destacada":false,
+          "temporadas": 3,
+          "duracion":"29min",
+          "calificacion": 4.8,
+          "calidad": "HD",
+          "genero": "Infantil",
+          "elenco": "-",
+          "origen": "UK",
+          "imagen": "https://images.tntdrama.com/tnt/$dyna_params/https%3A%2F%2Fi.cdn.tntdrama.com%2Fassets%2Fimages%2F2019%2F04%2FLastOG-2048x1536.jpg",
+          "url": ""
+      }
+
+    ]
+  }

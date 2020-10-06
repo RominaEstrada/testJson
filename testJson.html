@@ -1,0 +1,154 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align: center;">Todo App</h1>
+    <ul id="result"></ul>
+    <button onclick="getTodos()">Traer los todos</button>
+    <div>
+      <h3>Formulario</h3>
+      <form id="todoForm">
+        <div>
+          <label for="todoInput">Nombre:</label><br>
+          <input type="text" placeholder="Añadir tarea" id="todoInput" />
+        </div>
+        <div>
+          <label for="todoInput">Autor:</label><br>
+          <input type="text" placeholder="Añadir tarea" id="authorInput" />
+        </div>
+        <button type="submit">Crear</button>
+      </form>
+    </div>
+    <h3>Editar</h3>
+    <div id="editFormContainer">
+    </div>
+  </div>
+  <script>
+    const todoList = document.getElementById('result');
+    const form = document.getElementById('todoForm');
+    const editFormContainer = document.getElementById('editFormContainer')
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const nameTask = document.getElementById('todoInput').value;
+      const authorTask = document.getElementById('authorInput').value;
+      const data = { name: nameTask, author: authorTask};
+      postNewTodo(data);
+    })
+
+    todoList.addEventListener('click', e => {
+      if(e.target.classList.contains('deleteButton')) {
+        const id = e.target.parentElement.id;
+        deleteTask(id)
+      } else if(e.target.classList.contains('editButton')) {
+        getTodoById(e.target.parentElement.id)
+        .then(todo => createForm(todo))
+      }
+    })
+
+    async function getTodos() {
+      const url = 'http://localhost:3000/todos';
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    }
+
+    function buildTodo(todos) {
+      todos.map(todo => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div id="${todo.id}">
+            <a href="detail.html#${todo.id}">
+              ${todo.name}
+            </a> 
+            - <span>${todo.author}</span>
+            - <button type="button" class="deleteButton">X</button>
+            - <button type="button" class="editButton">Editar</button>
+          </div>
+        `
+        todoList.appendChild(li);
+      })
+    }
+
+    async function postNewTodo({ name, author}) {
+      const url = 'http://localhost:3000/todos';
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, author })
+      })
+      const newData = await response.json();
+      console.log(newData);
+      debugger
+    }
+
+    async function deleteTask(id) {
+      console.log(id);
+      const url = `http://localhost:3000/todos/${id}`;
+      const response = await fetch(url, {
+        method: 'DELETE'
+      })
+    }
+
+    function createForm(values) {
+      const form = document.createElement('form');
+      form.id = 'editForm'
+      form.classList.add('editableForm')
+      form.innerHTML = `
+      <div>
+          <label for="todoInput">Nombre:</label><br>
+          <input value="${values.name}" type="text" placeholder="Añadir tarea" id="todoEditInput" />
+        </div>
+        <div>
+          <label for="todoInput">Autor:</label><br>
+          <input value="${values.author}" type="text" placeholder="Añadir tarea" id="authorEditInput" />
+        </div>
+      <button class="putContent" id=${values.id} type="submit">Editar</button>
+      `
+      editFormContainer.appendChild(form);
+    }
+
+    async function getTodoById(id) {
+      const url = `http://localhost:3000/todos/${id}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      return data
+    }
+
+    async function editTodo(id, inputData) {
+      const url= `http://localhost:3000/todos/${id}`;
+      const response = await fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify(inputData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      })
+      const data = await response.json();
+      debugger
+      return data;
+    }
+
+    editFormContainer.addEventListener('submit', e => {
+      if (e.target.classList.contains('editableForm')) {
+        e.preventDefault();
+        const nameValue = document.getElementById('todoEditInput').value;
+        const authorValue = document.getElementById('authorEditInput').value;
+        const data = { name: nameValue, author: authorValue }
+        const id = e.target.lastChild.previousElementSibling.id;
+        editTodo(id, data);
+      }
+    })
+
+    getTodos().then(todos => buildTodo(todos));
+  </script>
+</body>
+</html>
